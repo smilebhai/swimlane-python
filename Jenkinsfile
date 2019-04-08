@@ -2,9 +2,7 @@
  * Jenkinsfile
  */
 pipeline {
-    agent {
-      node { label 'linux' }
-    }
+    agent any
 
     options {
       disableConcurrentBuilds()
