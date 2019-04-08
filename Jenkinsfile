@@ -7,19 +7,15 @@ pipeline {
     }
 
     options {
-        /*
-        disableConcurrentBuilds()
-        timeout(time: 3, unit: 'MINUTES')
-        timestamps()
-        */
-        buildDiscarder(
-            // disable automatic checkout of your repository
-            skipDefaultCheckout(true)
-            // Only keep the 3 most recent builds
-            logRotator(numToKeepStr:'3'))
+      disableConcurrentBuilds()
+      timeout(time: 15, unit: 'MINUTES')
+      timestamps()
     }
+
     environment {
+      VERSION = '1.0.0'
     }
+
     stages {
         stage ('Code pull') {
             steps {
