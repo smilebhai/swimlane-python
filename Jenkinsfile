@@ -24,9 +24,6 @@ pipeline {
     }
     */
 
-    environment {
-    }
-
     stages {
         /*
         stage ('Code pull') {
