@@ -15,3 +15,6 @@ release:
 
 build-offline-installer:
 	python2.7 offline_installer/build_installer.py
+
+pylint:
+	find . ./tests -name \*.py -not -path '*/venv/*' | xargs pylint --rcfile .pylintrc
