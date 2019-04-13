@@ -115,7 +115,7 @@ pipeline {
         }
         stage ('Cleanup') {
            steps {
-               sh('Echo cleaning up...')
+               echo "cleaning up..."
                sh('rm -rf venv')
            }
         }
