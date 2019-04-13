@@ -38,7 +38,6 @@ pipeline {
                     [ -d venv ] && rm -rf venv
                     virtualenv --python=python2.7 venv
                     . venv/bin/activate
-                    pip install pytest-runner pylint check-manifest codacy-coverage
                     pip install -U -r requirements.txt
                     pip install -U -r test-requirements.txt
                 """
@@ -49,6 +48,7 @@ pipeline {
                         // command || true continue execution when command fails
                         sh """
                             . venv/bin/activate
+                            pip install check-manifest tox flake8
                             [ -d report ] || mkdir report
                         """
                         echo "Check manifest"
@@ -69,6 +69,7 @@ pipeline {
                 sh """
                     rm -rf build
                     . venv/bin/activate
+                    pip install pytest-runner codacy-coverage
                     pip install -e .[test]
                     py.test -v --cov=swimlane --cov-report=xml
 
