@@ -53,13 +53,16 @@ pipeline {
                         """
                         echo "Check manifest"
                         sh """
+                            . venv/bin/activate
                             check-manifest | tee report/check-manifest.log || true
                         """
                         echo "flake8"
                         sh """
-                          tox -e flake8 | tee report/flake8.log || true
+                            . venv/bin/activate
+                            tox -e flake8 | tee report/flake8.log || true
                         """
                         sh """
+                            . venv/bin/activate
                             # make pylint | tee report/pylint.log || true
                         """
                     }
